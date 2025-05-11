@@ -1,0 +1,42 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings/
+
+title: My dashboard
+favicon: /icons/favicon.ico
+description: My dashboard
+
+headerStyle: underlined # default style
+
+startUrl: http://homepage.nemeapve.lan
+
+background:
+  image: /images/krosmoz1.jpg
+  #blur: sm # sm, "", md, xl... see https://tailwindcss.com/docs/backdrop-blur
+  #saturate: 50 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
+  #brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
+  #opacity: 100 # 0-100
+
+theme: dark
+
+color: purple
+# slate, gray, zinc, neutral, stone, amber, yellow, lime, green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia, pink, rose, red, white
+
+providers:
+  openweathermap: 4315idontthinkso343573
+
+showStats: true
+
+cardBlur: sm
+
+layout:
+  Social:
+    icon: https://toppng.com/uploads/thumbnail/database-database-icon-11563207079j8dvtin30q.png
+  Entertainment:
+    icon : https://www.truenas.com/wp-content/uploads/2020/06/logo-TrueNAS-Scale-compressor.png
+    style: row
+    columns: 4
+  Developer:
+    icon : /icons/proxmox.png
+    style: row
+    columns: 3

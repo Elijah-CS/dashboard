@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "dashboard.fullname" . }}
+  labels:
+    {{- include "dashboard.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "dashboard.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "dashboard.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          env:
+            - name: HOMEPAGE_ALLOWED_HOSTS
+              value: dashboard.homelab.int
+            - name: LOG_TARGETS
+              value: stdout
+          volumeMounts:
+            - name: dashboard-volume
+              mountPath: /app/config
+      volumes:
+        - name: dashboard-volume
+          configMap:
+            name: dashboard-configmap
+            items:
+              - key: bookmarks.yaml
+                path: bookmarks.yaml
+              - key: services.yaml
+                path: services.yaml
+              - key: widgets.yaml
+                path: widgets.yaml
+              - key: settings.yaml
+                path: settings.yaml
+              - key: kubernetes.yaml
+                path: kubernetes.yaml
