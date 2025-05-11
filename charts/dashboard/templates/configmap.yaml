@@ -99,4 +99,11 @@ data:
         columns: 3
   kubernetes.yaml: |
     # empty
+  docker.yaml: |
+    # empty
+  custom.css: |
+    # empty
+  custom.js: |
+    # empty
+
 
